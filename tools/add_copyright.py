@@ -88,7 +88,28 @@ def update_and_get_license() -> str:
         return license_file.read()
 
 
-LICENSE_TEXT = update_and_get_license()
+def _load_license_text() -> str:
+    """
+    Reads the LICENSE file and returns its contents, ensuring the returned text
+    contains the current year (no range) without writing back to the file.
+    This avoids side effects during import.
+    """
+    with open(LICENSE_PATH, "r") as f:
+        content = f.read()
+
+    match = COPYRIGHT_YEAR_PAT.search(content)
+    if not match:
+        return content
+
+    # Construct a copyright string that uses the current year (no range).
+    new_copyright = (
+        f"Copyright{match.groups()[0] or ''} {current_year}, NVIDIA CORPORATION"
+    )
+    updated_content = COPYRIGHT_YEAR_PAT.sub(new_copyright, content)
+    return updated_content
+
+
+LICENSE_TEXT = _load_license_text()
 
 #
 # Header manipulation helpers

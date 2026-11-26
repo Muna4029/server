@@ -37,17 +37,13 @@
 import json
 import os
 import re
-from datetime import date
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import httplib2
-import nvidia_sphinx_theme
-from docutils import nodes
 from packaging.version import Version
-from sphinx import search
 
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
@@ -65,7 +61,7 @@ from sphinx import search
 # -- Project information -----------------------------------------------------
 
 project = "NVIDIA Triton Inference Server"
-copyright = "2018-{}, NVIDIA Corporation".format(date.today().year)
+copyright = "Copyright 2023-2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved."
 author = "NVIDIA"
 
 # Get the version of Triton this is building.
